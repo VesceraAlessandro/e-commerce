@@ -1,6 +1,6 @@
 # e-commerce
 
-DATABASE:
+<h2>DATABASE</h2>
 freemysqlhosting.net
 
 EMAIL:
