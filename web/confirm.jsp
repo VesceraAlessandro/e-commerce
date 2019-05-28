@@ -22,6 +22,33 @@
     if (session.getAttribute("user") != null) {
         user = (User) session.getAttribute("user");
     }
+    
+    if(request.getParameter("indirizzo") != null){
+         try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SevenTechData", "root", "");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `ordine` (`idOrdine`, `idUtente`, `data`, `totale`, `indirizzoSpedizione`) VALUES (NULL, ?, ?, ?, ?); ");
+            /*SELECT LAST_INSERT_ID(); per avere l'idOrdine appena inserito (da usare in insert into storico*/
+            ps.setString(1, Integer.toString(user.getId()));
+            java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+            ps.setTimestamp(2, date);
+            ps.setString(3, request.getParameter("tot"));
+            ps.setString(4, request.getParameter("indirizzo"));
+            ps.execute();
+            ResultSet idOrdine = ps.getResultSet();
+            
+            /*foreach(request.){
+            PreparedStatement ps2 = con.prepareStatement("INSERT INTO `storico` (`id`, `idOrdine`, `idProdotto`, `quantita`) VALUES (NULL, ?, ?, ?)");
+            ps2.setInt(1, idOrdine.getInt("idOrdine"));
+            ps2.setInt(2, );
+            }*/
+            
+            con.close();
+            
+
+        } catch (Exception e) {
+            out.println("Errore:" + e + "");
+        }
+    }
 %>
 
 <!DOCTYPE html>
@@ -57,25 +84,9 @@
                     <div class="row">
                         <div class="col-lg-10 offset-lg-1">
                             <div class="cart_container">
-                                <div class="cart_title">Checkout</div>
-                                <br>
-                                <form method="GET" action="confirm.jsp">
-                                Indirizzo:
-                                <div class="contact_form_text">
-                                    <textarea id="contact_form_message" class="text_field contact_form_message" name="indirizzo" rows="4" placeholder="Indirizzo" required="required" data-error="Inserire l'indirizzo."></textarea>
-                                </div>
-                                <br>
-                                <h3>Totale: <%out.print(request.getParameter("tot")); %></h3><br>
-                                <input type="hidden" name="tot" value=" <%=request.getParameter("tot") %>">
-                                Pagamento:
-                                <br>
-                                
-                                <div id="paypal"></div>
-                                <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-                                <script>paypal.Buttons().render('#paypal');</script>
-                                <br><br>
-                                <button type="submit" class="button cart_button_checkout">Conferma ordine</button>
-                                </form>
+                                <h2>Ordine effettuato con successo</h2>
+                                <br> <h4>Grazie per aver acquistato su STech</h4><br>
+                                <a href="index.jsp" class="button cart_button_checkout">Torna alla home</a>
                             </div>
                         </div>
                     </div>

@@ -59,19 +59,23 @@
                             <div class="cart_container">
                                 <div class="cart_title">Checkout</div>
                                 <br>
+                                <form method="GET" action="confirm.jsp">
                                 Indirizzo:
                                 <div class="contact_form_text">
                                     <textarea id="contact_form_message" class="text_field contact_form_message" name="indirizzo" rows="4" placeholder="Indirizzo" required="required" data-error="Inserire l'indirizzo."></textarea>
                                 </div>
                                 <br>
+                                <h3>Totale: <%out.print(request.getParameter("tot")); %></h3><br>
+                                <input type="hidden" name="tot" value=" <%=request.getParameter("tot") %>">
                                 Pagamento:
                                 <br>
-                                <input type="text" class="header_search_input">
-                                <%  %>
-
+                                
                                 <div id="paypal"></div>
                                 <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
                                 <script>paypal.Buttons().render('#paypal');</script>
+                                <br><br>
+                                <button type="submit" class="button cart_button_checkout">Conferma ordine</button>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -82,6 +82,7 @@
                                 <div class="cart_title">Carrello</div>
                                 <div class="cart_items">
                                     <ul class="cart_list">
+                                        <form method="GET" action="checkout.jsp">
 
                                         <%                                            float tot = 0;
                                             //print cart
@@ -137,7 +138,6 @@
                                                 </div>
                                             </li>
                                             <input style="display: none" name='id' value="<%= rs.getInt("carrello.id")%>">
-                                        </form>
                                         <% }
                                                     con.close();
                                                 } catch (Exception e) {
@@ -156,13 +156,14 @@
                                     <div class="order_total_content text-md-right">
                                         <div class="order_total_title">Totale Ordine:</div>
                                         <div class="order_total_amount"><%=tot%></div>
+                                        <input type="hidden" name="tot" value="<%=tot%>"/>
                                     </div>
                                 </div>
 
                                 <div class="cart_buttons">
-                                    <form action="checkout.jsp">
+                                    
                                         <button type="submit" class="button cart_button_checkout">Procedi all'ordine</button>
-                                    </form>
+                                </form>
                                 </div>
                             </div>
                         </div>
