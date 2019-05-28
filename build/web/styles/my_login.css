@@ -1,0 +1,133 @@
+/* 
+    Created on : 18-mag-2019, 15.23.11
+    Author     : Stefano
+*/
+
+/* Full-width input fields */
+.my_input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.my_button {
+  background-color: #0e8ce4;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 200ms ease;
+}
+
+.my_button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.my_logo {
+  font-size: 32px;
+  font-weight: 400;
+  color: #0e8ce4;
+}
+
+.my_header {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.my_topContainer {
+  position: relative;
+  text-align: center;
+  margin: 24px 16px 0px;
+}
+
+.my_middleContainer {
+  padding: 16px 16px 0px;
+}
+
+.my_bottomContainer {
+  margin-top: 16px;
+  padding: 16px;
+  background-color:#f0f0f0;
+  border-top: solid 1px #eeeeee;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.my_modal-content {
+  flex-shrink: 0;
+  border: 1px solid #dadce0;
+  background-color: #fff;
+  margin: 5% auto; /* 5% from the top and centered */
+  border-radius: 8px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+  width: 575px;
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}

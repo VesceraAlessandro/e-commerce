@@ -1,0 +1,210 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/register_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/register_responsive.css">
+
+<div id="idRegister" class="register">
+
+    <form name="form_register" action="#" method="post" onsubmit="return registerAJAX()">
+
+        <div class="reg-container-top">
+            <i class="reg-logo">STech</i>
+            <div class="reg-toplabel">Register and Create your account</div>
+        </div>
+
+        <div class="reg-container-middle">
+            <div class="reg-row">
+                <div class="reg-row-firstelem">
+                    <div class="reg-label">Nome</div>
+                    <div>
+                        <input type="text" class="reg-input" name="name" placeholder="Inserire Nome" oninput="unsetRegisterInputError(this)" required>
+                        <div class="reg-tooltiptext-down"></div>
+                        <img src="images/error.png" class="reg-input-icon">
+                        <img src="images/loading.png" class="reg-input-icon reg-loading">
+                    </div>
+                </div>
+                <div class="reg-row-secelem">
+                    <div class="reg-label">Cognome</div>
+                    <div>
+                        <input type="text" class="reg-input" name="lastname" placeholder="Inserire Cognome" oninput="unsetRegisterInputError(this)" required>
+                        <div class="reg-tooltiptext"></div>
+                        <img src="images/error.png" class="reg-input-icon">
+                        <img src="images/loading.png" class="reg-input-icon reg-loading">
+                    </div>
+                </div>
+            </div>
+            <div class="reg-label">Username</div>
+            <div class="reg-elem">
+                <input type="text" class="reg-input" name="username" placeholder="Inserire Username" oninput="unsetRegisterInputError(this)" required>
+                <div class="reg-tooltiptext"></div>
+                <img src="images/error.png" class="reg-input-icon">
+                <img src="images/loading.png" class="reg-input-icon reg-loading">
+            </div>
+            <div class="reg-label">Email</div>
+            <div class="reg-elem">
+                <input type="text" class="reg-input" name="email" placeholder="Inserire Email" oninput="unsetRegisterInputError(this)" required>
+                <div class="reg-tooltiptext"></div>
+                <img src="images/error.png" class="reg-input-icon">
+                <img src="images/loading.png" class="reg-input-icon reg-loading">
+            </div>
+<!--            <div class="reg-label">Numero Cellulare</div>
+            <div class="reg-elem">
+                <input type="tel" class="reg-input" name="tel" placeholder="Inserire numero" oninput="">
+                <div class="reg-tooltiptext"></div>
+                <img src="images/error.png" class="reg-input-icon">
+                <img src="images/loading.png" class="reg-input-icon reg-loading">
+            </div>-->
+            <div class="reg-row">
+                <div class="reg-row-firstelem">
+                    <div class="reg-label">Password</div>
+                    <div>
+                        <input type="password" class="reg-input" name="password" placeholder="Inserire Password" oninput="unsetRegisterInputError(this)" required>
+                        <div class="reg-tooltiptext-down"></div>
+                        <img src="images/error.png" class="reg-input-icon">
+                        <img src="images/loading.png" class="reg-input-icon reg-loading">
+                    </div>
+                </div>
+                <div class="reg-row-secelem">
+                    <div class="reg-label">Conferma</div>
+                    <div>
+                        <input type="password" class="reg-input" name="confirm" placeholder="Confermare Password" oninput="unsetRegisterInputError(this)" required>
+                        <div class="reg-tooltiptext"></div>
+                        <img src="images/error.png" class="reg-input-icon">
+                        <img src="images/loading.png" class="reg-input-icon reg-loading">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="reg-button">Register</button>
+        </div>
+
+        <div class="reg-container-bottom">
+            <button type="button" class="reg-button reg-btn-login" onclick="setRegisterDisplay('none');setLoginDisplay('block')">Login</button>
+            <span class="reg-agree">Agree <a href="#">terms?</a></span>
+        </div>
+    </form>
+</div>
+
+<script>
+    var register = document.getElementById('idRegister');
+    var reg_loadingNode = document.getElementsByClassName('reg-loading');
+
+    register.onclick = function (event) {
+        if (event.target == register) {
+            setRegisterDisplay('none');
+        }
+    }
+
+    function setRegisterDisplay(value) {
+        register.style.display = value;
+    }
+
+    function setRegisterInputError(element, message) {
+        element.classList.add("reg-input-error");
+        element.parentElement.children[1].style.display = 'block';
+        element.parentElement.children[1].innerHTML = message;
+        element.parentElement.children[2].style.display = 'block';
+    }
+
+    function unsetRegisterInputError(element) {
+        element.classList.remove("reg-input-error");
+        element.parentElement.children[1].style.display = 'none';
+        element.parentElement.children[2].style.display = 'none';
+    }
+
+    function registerAJAX() {
+        var register = false;
+        var name = form_register.name;
+        var lastname = form_register.lastname;
+        var username = form_register.username;
+        var email = form_register.email;
+        var password = form_register.password;
+
+        unsetRegisterInputError(name);
+        unsetRegisterInputError(lastname);
+        unsetRegisterInputError(username);
+        unsetRegisterInputError(email);
+        unsetRegisterInputError(password);
+        unsetRegisterInputError(form_register.confirm);
+        if (!validaEmail()) {
+            if (validaPassword())
+                validaConferma();
+            return false;
+        }
+        if (!validaPassword() || !validaConferma())
+            return false;
+
+        for (var i = 0; i < reg_loadingNode.length; i++) {
+            reg_loadingNode[i].style.display = 'block';
+        }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                register = registerResponseXML(this);
+                for (var i = 0; i < reg_loadingNode.length; i++) {
+                    reg_loadingNode[i].style.display = 'none';
+                }
+                if (register) {
+                    location.reload();
+                }
+            }
+        };
+        xhttp.open("POST", "RegisterServletAJAX", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("name=" + name.value + "&lastname=" + lastname.value + "&username=" + username.value
+                + "&email=" + email.value + "&password=" + password.value);
+        return register;
+    }
+
+    function registerResponseXML(xml) {
+        var xmlDoc = xml.responseXML;
+        var errorNode = xmlDoc.getElementsByTagName("error");
+
+        for (var i = 0; i < errorNode.length; i++) {
+            var error = errorNode[0];
+            var field = error.childNodes[0].childNodes[0].nodeValue;
+            var message = error.childNodes[1].childNodes[0].nodeValue;
+            if (field == 'username') {
+                setRegisterInputError(form_register.username, message);
+            } else if (field == 'email') {
+                setRegisterInputError(form_register.email, message);
+            }
+        }
+        if (errorNode.length == 0)
+            return true;
+        return false;
+    }
+
+    function validaEmail() {
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form_register.email.value)) {
+            setRegisterInputError(form_register.email, 'Email non valida');
+            return false;
+        }
+        unsetRegisterInputError(form_register.email);
+        return true;
+    }
+
+    function validaPassword() {
+        var password = form_register.password;
+        var psw = password.value;
+        if (psw.length < 8 || 30 < psw.length) {
+            setRegisterInputError(password, 'Solo tra gli 8 e i 30 caratteri');
+            return false;
+        } else if (psw.charAt(0) == ' ' || psw.charAt(psw.length - 1) == ' ') {
+            setRegisterInputError(password, 'Niente spazi all\'inizio e alla fine');
+            return false;
+        }
+        unsetRegisterInputError(form_register.password);
+        return true;
+    }
+
+    function validaConferma() {
+        if (form_register.confirm.value != form_register.password.value) {
+            setRegisterInputError(form_register.confirm, 'Le password non corrispondono');
+            return false;
+        }
+        unsetRegisterInputError(form_register.confirm);
+        return true;
+    }
+
+</script>

@@ -1,0 +1,119 @@
+<!--login form-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/login_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/login_responsive.css">
+
+<div id="idLogin" class="login">
+
+    <form name="form_login" action="#" method="post" onsubmit="return loginAJAX();">
+        <div class="lgn-container-top">
+            <img src="images/img_avatar2.png" alt="Avatar" class="lgn-avatar">
+        </div>
+
+        <div class="lgn-container-middle">
+            <div class="lgn-label">Username or Email</div>
+            <div class="lgn-elem">
+                <input type="text" class="lgn-input" name="username" placeholder="Enter Username or Email" oninput="unsetLoginInputError(this)" required>
+                <div class="lgn-tooltiptext"></div>
+                <img src="images/error.png" class="lgn-input-icon">
+                <img src="images/loading.png" class="lgn-input-icon lgn-loading">
+            </div>
+
+            <div class="lgn-label">Password</div>
+            <div class="lgn-elem">
+                <input type="password" class="lgn-input" name="password" placeholder="Enter Password" oninput="unsetLoginInputError(this)" required>
+                <div class="lgn-tooltiptext"></div>
+                <img src="images/error.png" class="lgn-input-icon">
+                <img src="images/loading.png" class="lgn-input-icon lgn-loading">
+            </div>  
+
+            <button type="submit" class="lgn-button">Login</button>
+            <div class="lgn-contr-remember">
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </div>
+        </div>
+
+        <div class="lgn-container-bottom">
+            <button type="button" class="lgn-button lgn-btn-register" onclick="setLoginDisplay('none');setRegisterDisplay('block')">Register</button>
+            <span class="lgn-FP">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    var login = document.getElementById('idLogin');
+    var lgn_loadingNode = document.getElementsByClassName('lgn-loading');
+
+    login.onclick = function (event) {
+        if (event.target == login) {
+            setLoginDisplay('none');
+        }
+    }
+
+    function setLoginDisplay(value) {
+        login.style.display = value;
+    }
+
+    function setLoginInputError(element, message) {
+        element.classList.add("lgn-input-error");
+        element.parentElement.children[1].style.display = 'block';
+        element.parentElement.children[1].innerHTML = message;
+        element.parentElement.children[2].style.display = 'block';
+    }
+
+    function unsetLoginInputError(element) {
+        element.classList.remove("lgn-input-error");
+        element.parentElement.children[1].style.display = 'none';
+        element.parentElement.children[2].style.display = 'none';
+    }
+
+    function loginAJAX() {
+        var login = false;
+        var username = form_login.username;
+        var password = form_login.password;
+
+        unsetLoginInputError(username);
+        unsetLoginInputError(password);
+
+        for (var i = 0; i < lgn_loadingNode.length; i++) {
+            lgn_loadingNode[i].style.display = 'block';
+        }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                login = loginResponseXML(this);
+                for (var i = 0; i < lgn_loadingNode.length; i++) {
+                    lgn_loadingNode[i].style.display = 'none';
+                }
+                if (login) {
+                    window.location = "/SevenTechApplication/";
+                }
+            }
+        };
+        xhttp.open("POST", "LoginServletAJAX", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("username=" + username.value + "&password=" + password.value);
+        return login;
+    }
+
+    function loginResponseXML(xml) {
+        var xmlDoc = xml.responseXML;
+        var errorNode = xmlDoc.getElementsByTagName("error");
+
+        for (var i = 0; i < errorNode.length; i++) {
+            var error = errorNode[0];
+            var field = error.childNodes[0].childNodes[0].nodeValue;
+            var message = error.childNodes[1].childNodes[0].nodeValue;
+            if (field == 'username') {
+                setLoginInputError(form_login.username, message);
+            } else if (field == 'password') {
+                setLoginInputError(form_login.password, message);
+            }
+        }
+        if (errorNode.length == 0)
+            return true;
+        return false;
+    }
+</script>

@@ -1,0 +1,21 @@
+.logout-button {
+    font-size: 16px;
+    font-weight: 300;
+    background-color: transparent;
+    outline-style: none!important;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.logout-button:hover {
+    color: #8a8a8a;
+}

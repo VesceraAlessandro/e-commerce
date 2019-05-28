@@ -1,0 +1,39 @@
+/* 
+    Created on : 18-mag-2019, 15.23.11
+    Author     : Stefano
+*/
+
+@media screen and (max-width: 1050px) {
+  .lgn-elem {
+    margin-bottom: 32px;
+  }
+  .lgn-tooltiptext {
+    top: 100%;
+    left: auto;
+    right: 0%;
+    margin: 0px;
+    margin-top: -3px;
+    text-align: right;
+  }
+  .lgn-tooltiptext::after {
+    top: auto;
+    bottom: 100%;
+    right: 0%;
+    margin-right: 17px;
+    border-color: transparent;
+    border-bottom-color: #d93025;
+  }
+}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 575px) {
+  .lgn-FP {
+    display: block;
+    float: none;
+  }
+  .lgn-btn-cancel {
+    width: 100%;
+  }
+  .login form {
+    width: 100%;
+  }
+}

@@ -1,0 +1,219 @@
+/* 
+    Created on : 18-mag-2019, 15.23.11
+    Author     : Stefano
+*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+/*.lgn-btn-open {
+    font-size: 16px;
+    font-weight: 300;
+    background-color: transparent;
+    outline-style: none!important;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.lgn-btn-open:hover {
+    color: #8a8a8a;
+}*/
+
+/* The Modal (background) */
+.login {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1050; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+  padding-top: 56px;
+}
+
+/* Modal Content/Box */
+.login form {
+  flex-shrink: 0;
+  margin: 5% auto; /* 5% from the top and centered */
+  width: 575px;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+  -webkit-animation: lgn-animatezoom 0.5s;
+  animation: lgn-animatezoom 0.5s
+}
+
+.lgn-container-top {
+  position: relative;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.lgn-container-middle {
+  padding: 16px;
+}
+
+.lgn-container-bottom {
+  padding: 16px;
+  background-color:#f0f0f0;
+  border-top: solid 1px #eeeeee;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.lgn-avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.lgn-label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.lgn-elem {}
+
+.lgn-contr-remember {
+  margin-bottom: 8px;
+}
+
+/* Full-width input fields */
+.lgn-input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px 48px 12px 20px;
+  display: inline-block;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.lgn-input-error {
+  border: 1px solid #d93025;
+  outline-color: #d93025;
+  box-shadow: 0px 0px 2px rgba(217, 48, 37, 1);
+}
+
+.lgn-tooltiptext {
+  display: none;
+  position: absolute;
+  top: 14px;
+  left: 100%;
+  max-width: -webkit-fill-available;
+  background-color: #d93025;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  margin-left: 5px;
+  padding: 7px 20px;
+  border-radius: 4px;
+  -webkit-animation: lgn-animatezoom 200ms;
+  animation: lgn-animatezoom 200ms;
+}
+
+.lgn-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-right-color: #d93025;
+}
+
+.lgn-input-icon {
+  display: none;
+  position: absolute;
+  top: 19.5px;
+  right: 10.5px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.9;
+}
+
+.lgn-loading {
+  animation: lgn-loading 1s linear infinite;
+}
+
+.lgn-button {
+  background-color: #0e8ce4;
+  color: white;
+  width: 100%;
+  margin: 8px 0;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.lgn-button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the register button */
+.lgn-btn-register {
+  width: auto;
+  padding: 10px 18px;
+  color: #0e8ce4;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+}
+
+.lgn-FP {
+  float: right;
+  padding-top: 16px;
+}
+
+@-webkit-keyframes lgn-animatezoom {
+  from {-webkit-transform: scale(0);opacity: 0} 
+  to {-webkit-transform: scale(1);opacity: 1}
+}
+  
+@keyframes lgn-animatezoom {
+  from {transform: scale(0);opacity: 0} 
+  to {transform: scale(1);opacity:1}
+}
+
+@keyframes lgn-loading {
+  from{
+  }to{
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
