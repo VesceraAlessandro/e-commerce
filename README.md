@@ -1,1 +1,3 @@
-# e-commerce
+# STech - ecommerce
+
+Ecommerce created using JSP and Servlet
