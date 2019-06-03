@@ -4,6 +4,8 @@
     Author     : LS_Fisso
 --%>
 
+<%@page import="com.sun.xml.internal.messaging.saaj.packaging.mime.Header"%>
+<%@page import="javafx.scene.control.Alert"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -74,12 +76,14 @@
                                         while (rs.next()) {
                                             tot += rs.getFloat("prezzoScontato") * rs.getInt("quantita");
                                         }
+                                        if(tot == 0){
+                                            response.sendRedirect("cart.jsp");
+                                        }
                                     %>
 
                                     <h3>Totale: <%=tot%></h3><br>
                                     <input type="hidden" name="tot" value=" <%=tot%>">
                                     <%
-
                                         con.close();
                                     %>
                                     Pagamento:
