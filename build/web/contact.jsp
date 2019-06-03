@@ -81,7 +81,7 @@
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
 							<div class="contact_info_image"><img src="images/contact_1.png" alt=""></div>
 							<div class="contact_info_content">
-								<div class="contact_info_title">Phone</div>
+								<div class="contact_info_title">Telefono</div>
 								<div class="contact_info_text">+38 068 005 3570</div>
 							</div>
 						</div>
@@ -99,8 +99,8 @@
 						<div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
 							<div class="contact_info_image"><img src="images/contact_3.png" alt=""></div>
 							<div class="contact_info_content">
-								<div class="contact_info_title">Address</div>
-								<div class="contact_info_text">10 Suffolk at Soho, London, UK</div>
+								<div class="contact_info_title">Indirizzo</div>
+								<div class="contact_info_text">Via 48 Novembre, Roma, IT</div>
 							</div>
 						</div>
 
@@ -117,19 +117,19 @@
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="contact_form_container">
-						<div class="contact_form_title">Get in Touch</div>
+						<div class="contact_form_title">Contattaci</div>
 
 						<form action="#" id="contact_form">
 							<div class="contact_form_inputs d-flex flex-md-row flex-column justify-content-between align-items-between">
-								<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Your name" required="required" data-error="Name is required.">
-								<input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="Your email" required="required" data-error="Email is required.">
-								<input type="text" id="contact_form_phone" class="contact_form_phone input_field" placeholder="Your phone number">
+								<input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Nome" required="required" data-error="Name is required.">
+								<input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="Email" required="required" data-error="Email is required.">
+								<input type="text" id="contact_form_phone" class="contact_form_phone input_field" placeholder="Cellulare">
 							</div>
 							<div class="contact_form_text">
-								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+								<textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Messaggio" required="required" data-error="Please, write us a message."></textarea>
 							</div>
 							<div class="contact_form_button">
-								<button type="submit" class="button contact_submit_button">Send Message</button>
+								<button type="submit" class="button contact_submit_button">Invia</button>
 							</div>
 						</form>
 

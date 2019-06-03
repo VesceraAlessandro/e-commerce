@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col d-flex flex-row">
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+39 3392591919</div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="support@eshop.com">support@eshop.com</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="support@eshop.com">support@stech.com</a></div>
                     <div class="top_bar_content ml-auto">
                         <!--<div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
@@ -36,8 +36,8 @@
                         <div class="top_bar_user" style="line-height: 56px;">
                             <div class="user_icon"><img src="images/user.svg" alt=""></div>
                                 <%if (user == null) {%>
-                            <div><a href="#" onclick="setRegisterDisplay('block')">Register</a></div>
-                            <div><a href="#" onclick="setLoginDisplay('block')">Sign in</a></div>
+                            <div><a href="#" onclick="setRegisterDisplay('block')">Registrati</a></div>
+                            <div><a href="#" onclick="setLoginDisplay('block')">Accedi</a></div>
                             <%} else {%>
                             <jsp:include page="userview.jsp"/>
                             <%}%>
@@ -67,7 +67,7 @@
                         <div class="header_search_content">
                             <div class="header_search_form_container">
                                 <form action="shop.jsp" method="GET" class="header_search_form clearfix">
-                                    <input type="search" name="searchText" required="required" class="header_search_input" placeholder="Search for products...">
+                                    <input type="search" name="searchText" required="required" class="header_search_input" placeholder="Cerca prodotti...">
                                     <div class="custom_dropdown" style="display: none">
                                         <div class="custom_dropdown_list">
                                             <span class="custom_dropdown_placeholder clc">All Categories</span>
@@ -107,7 +107,7 @@
                                     %>
                                 </div>
                                 <div class="cart_content">
-                                    <div class="cart_text"><a href="cart.jsp">Cart</a></div>
+                                    <div class="cart_text"><a href="cart.jsp">Carrello</a></div>
                                     <div class="cart_price"></div>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                         <div class="cat_menu_container">
                             <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                                 <div class="cat_burger"><span></span><span></span><span></span></div>
-                                <div class="cat_menu_text">categories</div>
+                                <div class="cat_menu_text">categorie</div>
                             </div>
 
                             <ul class="cat_menu">
@@ -163,7 +163,7 @@
                                 <li><a href="index.jsp">Home<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="shop.jsp">Shop<i class="fas fa-chevron-down"></i></a></li>
                                 <% if (user != null) { %><li><a href="storico.jsp">Storico<i class="fas fa-chevron-down"></i></a></li> <% }%>
-                                <li><a href="contact.jsp">Contact<i class="fas fa-chevron-down"></i></a></li>
+                                <li><a href="contact.jsp">Contatti<i class="fas fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 

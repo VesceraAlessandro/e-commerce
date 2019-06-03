@@ -139,7 +139,7 @@
 
                                                 <!-- Product Quantity -->
                                                 <div class="product_quantity clearfix">
-                                                    <span>Quantity: </span>
+                                                    <span>Quantità: </span>
                                                     <input id="quantity_input" type="text" pattern="[1-9]*" value="1" name="quantita">
                                                     <div class="quantity_buttons">
                                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
@@ -181,7 +181,7 @@
 
 
                                             <div class="button_container">
-                                                <button type="submit" class="button cart_button" name="add">Add to Cart</button>
+                                                <button type="submit" class="button cart_button" name="add">Aggiungi al carrello</button>
                                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
                                             </div>
 

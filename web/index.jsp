@@ -90,10 +90,10 @@
                         <div class="banner_product_image"><img src="images/banner_product.png" alt=""></div>
                         <div class="col-lg-5 offset-lg-4 fill_height">
                             <div class="banner_content">
-                                <h1 class="banner_text">new era of smartphones</h1>
+                                <h1 class="banner_text">la nuova era degli smartphone</h1>
                                 <div class="banner_price"><span>$530</span>$460</div>
                                 <div class="banner_product_name">Apple Iphone 6s</div>
-                                <div class="button banner_button"><a href="#">Shop Now</a></div>
+                                <div class="button banner_button"><a href="#">Compra ora</a></div>
                             </div>
                         </div>
                     </div>
@@ -112,8 +112,8 @@
                             <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                 <div class="char_icon"><img src="images/char_1.png" alt=""></div>
                                 <div class="char_content">
-                                    <div class="char_title">Free Delivery</div>
-                                    <div class="char_subtitle">from $50</div>
+                                    <div class="char_title">Spedizione gratuita</div>
+                                    <div class="char_subtitle">da $50</div>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                             <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                 <div class="char_icon"><img src="images/char_2.png" alt=""></div>
                                 <div class="char_content">
-                                    <div class="char_title">Easy return</div>
-                                    <div class="char_subtitle">from your home</div>
+                                    <div class="char_title">Resi facili</div>
+                                    <div class="char_subtitle">direttamente da casa tua</div>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +136,8 @@
                             <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                 <div class="char_icon"><img src="images/char_3.png" alt=""></div>
                                 <div class="char_content">
-                                    <div class="char_title">PayPal payment</div>
-                                    <div class="char_subtitle">from $0</div>
+                                    <div class="char_title">Pagamento PayPal</div>
+                                    <div class="char_subtitle">da $0</div>
                                 </div>
                             </div>
                         </div>
@@ -148,8 +148,8 @@
                             <div class="char_item d-flex flex-row align-items-center justify-content-start">
                                 <div class="char_icon"><img src="images/char_4.png" alt=""></div>
                                 <div class="char_content">
-                                    <div class="char_title">Many sales</div>
-                                    <div class="char_subtitle">all the year</div>
+                                    <div class="char_title">Offerte esclusive</div>
+                                    <div class="char_subtitle">prezzi più bassi del web</div>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                                                 <div class="banner_2_title"><%= rs.getString("nome")%></div>
                                                 <div class="banner_2_text"><%= rs.getString("descrizione")%></div>
                                                 <!--                                                <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>-->
-                                                <div class="button banner_2_button"><a href="product.jsp?id=<%= rs.getInt("id")%>">Explore</a></div>
+                                                <div class="button banner_2_button"><a href="product.jsp?id=<%= rs.getInt("id")%>">Di più</a></div>
                                             </div>
 
                                         </div>
@@ -218,12 +218,11 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="popular_categories_content">
-                                <div class="popular_categories_title">Popular Categories</div>
+                                <div class="popular_categories_title">Categorie popolari</div>
                                 <div class="popular_categories_slider_nav">
                                     <div class="popular_categories_prev popular_categories_nav"><i class="fas fa-angle-left ml-auto"></i></div>
                                     <div class="popular_categories_next popular_categories_nav"><i class="fas fa-angle-right ml-auto"></i></div>
                                 </div>
-                                <div class="popular_categories_link"><a href="#">full catalog</a></div>
                             </div>
                         </div>
 
@@ -261,7 +260,7 @@
                                     <div class="owl-item">
                                         <div class="popular_category d-flex flex-column align-items-center justify-content-center">
                                             <div class="popular_category_image"><img src="images/popular_4.png" alt=""></div>
-                                            <div class="popular_category_text">Video Games & Consoles</div>
+                                            <div class="popular_category_text">Video Games & Console</div>
                                         </div>
                                     </div>
 
@@ -269,7 +268,7 @@
                                     <div class="owl-item">
                                         <div class="popular_category d-flex flex-column align-items-center justify-content-center">
                                             <div class="popular_category_image"><img src="images/popular_5.png" alt=""></div>
-                                            <div class="popular_category_text">Accessories</div>
+                                            <div class="popular_category_text">Accessori</div>
                                         </div>
                                     </div>
 
@@ -289,7 +288,7 @@
                         <div class="col">
                             <div class="tabbed_container">
                                 <div class="tabs clearfix tabs-right">
-                                    <div class="new_arrivals_title">Hot New Arrivals</div>
+                                    <div class="new_arrivals_title">Nuovi arrivi</div>
                                     <ul class="clearfix">
                                         <li class="active"></li>
                                         <!--                                        <li>Audio & Video</li>
@@ -386,7 +385,7 @@
                             <div class="col">
                                 <div class="tabbed_container">
                                     <div class="tabs clearfix tabs-right">
-                                        <div class="new_arrivals_title">Hot Best Sellers</div>
+                                        <div class="new_arrivals_title">Best Sellers</div>
                                         <ul class="clearfix">
                                             <li class="active"></li>
                                         </ul>

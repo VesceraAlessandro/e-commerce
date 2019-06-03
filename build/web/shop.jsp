@@ -115,7 +115,7 @@
                             <!-- Shop Sidebar -->
                             <div class="shop_sidebar">
                                 <div class="sidebar_section">
-                                    <div class="sidebar_title">Categories</div>
+                                    <div class="sidebar_title">Categorie</div>
                                     <ul class="sidebar_categories">
                                         <li><a href="shop.jsp">All</a></li>
                                             <%                                                    //print categories
@@ -137,8 +137,8 @@
                                     </ul>
                                 </div>
                                 <div class="sidebar_section filter_by_section">
-                                    <div class="sidebar_title">Filter By</div>
-                                    <div class="sidebar_subtitle">Price</div>
+                                    <div class="sidebar_title">Filtra per</div>
+                                    <div class="sidebar_subtitle">Prezzo</div>
                                     <div class="filter_price">
                                         <div id="slider-range" class="slider_range"></div>
                                         <p>Range: </p>
@@ -155,16 +155,16 @@
 
                             <div class="shop_content">
                                 <div class="shop_bar clearfix">
-                                    <div class="shop_product_count"><span>186</span> products found</div>
+                                    <!--<div class="shop_product_count"><span>186</span> products found</div>-->
                                     <div class="shop_sorting">
-                                        <span>Sort by:</span>
+                                        <span>Ordina per:</span>
                                         <ul>
                                             <li>
-                                                <span class="sorting_text">highest rated<i class="fas fa-chevron-down"></span></i>
+                                                <span class="sorting_text">default<i class="fas fa-chevron-down"></span></i>
                                                 <ul>
-                                                    <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
-                                                    <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name</li>
-                                                    <li class="shop_sorting_button"data-isotope-option='{ "sortBy": "price" }'>price</li>
+                                                    <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "original-order" }'>default</li>
+                                                    <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>nome</li>
+                                                    <li class="shop_sorting_button"data-isotope-option='{ "sortBy": "price" }'>prezzo</li>
                                                 </ul>
                                             </li>
                                         </ul>

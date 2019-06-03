@@ -82,8 +82,6 @@
                                 <div class="cart_title">Carrello</div>
                                 <div class="cart_items">
                                     <ul class="cart_list">
-                                        <form method="GET" action="checkout.jsp">
-
                                         <%                                            float tot = 0;
                                             //print cart
                                             if (user != null) {
@@ -111,12 +109,12 @@
                                                             <input id="quantity_input_<%= rs.getInt("carrello.id")%>" type="text" pattern="[1-9]*" value="<%= rs.getInt("quantita")%>" name="quantita" onchange="document.form -<%= rs.getInt("carrello.id")%>.submit();">
                                                             <div class="quantity_buttons">
                                                                 <div id="quantity_inc_button" class="quantity_inc quantity_control" onclick='
-                                                                        document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "<%= rs.getInt("quantita") + 1%>";
-                                                                        document.form_<%= rs.getInt("carrello.id")%>.submit();'
+                                                                            document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "<%= rs.getInt("quantita") + 1%>";
+                                                                            document.form_<%= rs.getInt("carrello.id")%>.submit();'
                                                                      ><i class="fas fa-chevron-up"></i></div>
                                                                 <div id="quantity_dec_button" class="quantity_dec quantity_control" onclick='
-                                                                        document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "<%= rs.getInt("quantita") - 1%>";
-                                                                        document.form_<%= rs.getInt("carrello.id")%>.submit();'
+                                                                            document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "<%= rs.getInt("quantita") - 1%>";
+                                                                            document.form_<%= rs.getInt("carrello.id")%>.submit();'
                                                                      ><i class="fas fa-chevron-down"></i></div>
                                                             </div>
                                                         </div>
@@ -132,12 +130,12 @@
                                                     <div class="cart_item_color cart_info_col">
                                                         <div class="cart_item_title"></div>
                                                         <div class="cart_item_text"><button onclick='
-                                                                document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "0";
-                                                                document.form_<%= rs.getInt("carrello.id")%>.submit();'>Elimina</button></div>
+                                                                    document.getElementById("quantity_input_<%= rs.getInt("carrello.id")%>").value = "0";
+                                                                    document.form_<%= rs.getInt("carrello.id")%>.submit();'>Elimina</button></div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <input style="display: none" name='id' value="<%= rs.getInt("carrello.id")%>">
+                                        <input style="display: none" name='id' value="<%= rs.getInt("carrello.id")%>">
                                         <% }
                                                     con.close();
                                                 } catch (Exception e) {
@@ -161,9 +159,8 @@
                                 </div>
 
                                 <div class="cart_buttons">
-                                    
-                                        <button type="submit" class="button cart_button_checkout">Procedi all'ordine</button>
-                                </form>
+
+                                    <a href="checkout.jsp" class="button cart_button_checkout">Procedi all'ordine</a>
                                 </div>
                             </div>
                         </div>

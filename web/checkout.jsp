@@ -37,7 +37,7 @@
         <link rel="stylesheet" type="text/css" href="styles/cart_styles.css">
         <link rel="stylesheet" type="text/css" href="styles/cart_responsive.css">
 
-        
+
         <link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
 
         <link rel="stylesheet" type="text/css" href="styles/product_styles.css">
@@ -60,21 +60,36 @@
                                 <div class="cart_title">Checkout</div>
                                 <br>
                                 <form method="GET" action="confirm.jsp">
-                                Indirizzo:
-                                <div class="contact_form_text">
-                                    <textarea id="contact_form_message" class="text_field contact_form_message" name="indirizzo" rows="4" placeholder="Indirizzo" required="required" data-error="Inserire l'indirizzo."></textarea>
-                                </div>
-                                <br>
-                                <h3>Totale: <%out.print(request.getParameter("tot")); %></h3><br>
-                                <input type="hidden" name="tot" value=" <%=request.getParameter("tot") %>">
-                                Pagamento:
-                                <br>
-                                
-                                <div id="paypal"></div>
-                                <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-                                <script>paypal.Buttons().render('#paypal');</script>
-                                <br><br>
-                                <button type="submit" class="button cart_button_checkout">Conferma ordine</button>
+                                    Indirizzo:
+                                    <div class="contact_form_text">
+                                        <textarea id="contact_form_message" class="text_field contact_form_message" name="indirizzo" rows="4" placeholder="Indirizzo" required="required" data-error="Inserire l'indirizzo."></textarea>
+                                    </div>
+                                    <br>
+
+
+                                    <%
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SevenTechData", "root", "");
+                                        ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `carrello`, prodotti WHERE carrello.idProdotto = prodotti.id And carrello.idUtente LIKE " + user.getId());
+                                        float tot = 0;
+                                        while (rs.next()) {
+                                            tot += rs.getFloat("prezzoScontato") * rs.getInt("quantita");
+                                        }
+                                    %>
+
+                                    <h3>Totale: <%=tot%></h3><br>
+                                    <input type="hidden" name="tot" value=" <%=tot%>">
+                                    <%
+
+                                        con.close();
+                                    %>
+                                    Pagamento:
+                                    <br>
+
+                                    <div id="paypal"></div>
+                                    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+                                    <script>paypal.Buttons().render('#paypal');</script>
+                                    <br><br>
+                                    <button type="submit" class="button cart_button_checkout">Conferma ordine</button>
                                 </form>
                             </div>
                         </div>
