@@ -4,6 +4,7 @@
     Author     : LS_Fisso
 --%>
 
+<%@page import="com.mysql.jdbc.Statement"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -26,21 +27,36 @@
     if(request.getParameter("indirizzo") != null){
          try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SevenTechData", "root", "");
-            PreparedStatement ps = con.prepareStatement("INSERT INTO `ordine` (`idOrdine`, `idUtente`, `data`, `totale`, `indirizzoSpedizione`) VALUES (NULL, ?, ?, ?, ?); ");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `ordine` (`idOrdine`, `idUtente`, `data`, `totale`, `indirizzoSpedizione`) VALUES (NULL, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             /*SELECT LAST_INSERT_ID(); per avere l'idOrdine appena inserito (da usare in insert into storico*/
             ps.setString(1, Integer.toString(user.getId()));
             java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
             ps.setTimestamp(2, date);
             ps.setString(3, request.getParameter("tot"));
             ps.setString(4, request.getParameter("indirizzo"));
-            ps.execute();
-            ResultSet idOrdine = ps.getResultSet();
+            ps.executeUpdate();
             
-            /*foreach(request.){
-            PreparedStatement ps2 = con.prepareStatement("INSERT INTO `storico` (`id`, `idOrdine`, `idProdotto`, `quantita`) VALUES (NULL, ?, ?, ?)");
-            ps2.setInt(1, idOrdine.getInt("idOrdine"));
-            ps2.setInt(2, );
-            }*/
+            ResultSet rsIdOrdine = ps.getGeneratedKeys();
+            int idOrdine = -1;
+            if(rsIdOrdine.next()){
+		idOrdine = rsIdOrdine.getInt(1);
+            }
+            
+            //INSERISCE DATI NELLO STORICO
+            
+            ResultSet prodotti = con.createStatement().executeQuery("SELECT idProdotto, quantita FROM carrello WHERE idUtente = " + user.getId());
+            
+            while(prodotti.next()){
+                PreparedStatement ps2 = con.prepareStatement("INSERT INTO `storico` (`id`, `idOrdine`, `idProdotto`, `quantita`) VALUES (NULL, ?, ?, ?)");
+                ps2.setInt(1, idOrdine);
+                ps2.setInt(2, prodotti.getInt("idProdotto"));
+                ps2.setInt(3, prodotti.getInt("quantita"));
+                ps2.executeUpdate();
+            }
+            
+            
+            //SVUOTA CARRELLO
+            con.createStatement().execute("DELETE FROM carrello WHERE idUtente = "  + user.getId());
             
             con.close();
             

@@ -88,7 +88,7 @@
 
                                                     <div class="cart_item_quantity cart_info_col">
                                                         <div class="cart_item_title">Quantita</div>
-                                                        <div class="cart_item_text"><%= rsP.getString("quantita")%></div>
+                                                        <div class="cart_item_text"><%= rsP.getInt("quantita")%></div>
                                                     </div>
 
 
