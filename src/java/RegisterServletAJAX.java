@@ -8,6 +8,9 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +43,7 @@ public class RegisterServletAJAX extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String hashPassword = encryptThisString(password);
         //controlla le condizioni
         if(request.getSession().getAttribute("username") != null) return;//già dentro
         if(!email.matches("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-zA-Z-0-9-\\_\\+\\.)]+\\.[(a-zA-Z-0-9)]{2,3}$")) return;//email invalida
@@ -53,7 +57,7 @@ public class RegisterServletAJAX extends HttpServlet {
         ps.setString(2, lastname);
         ps.setString(3, username);
         ps.setString(4, email);
-        ps.setString(5, password);
+        ps.setString(5, hashPassword);
         //XML response
         out.print("<response>");
         try{
@@ -114,5 +118,37 @@ public class RegisterServletAJAX extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public static String encryptThisString(String input) 
+    { 
+        try { 
+            // getInstance() method is called with algorithm SHA-1 
+            MessageDigest md = MessageDigest.getInstance("SHA-1"); 
+  
+            // digest() method is called 
+            // to calculate message digest of the input string 
+            // returned as array of byte 
+            byte[] messageDigest = md.digest(input.getBytes()); 
+  
+            // Convert byte array into signum representation 
+            BigInteger no = new BigInteger(1, messageDigest); 
+  
+            // Convert message digest into hex value 
+            String hashtext = no.toString(16); 
+  
+            // Add preceding 0s to make it 32 bit 
+            while (hashtext.length() < 32) { 
+                hashtext = "0" + hashtext; 
+            } 
+  
+            // return the HashText 
+            return hashtext; 
+        } 
+  
+        // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) { 
+            throw new RuntimeException(e); 
+        } 
+    } 
 
 }

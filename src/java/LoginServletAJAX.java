@@ -8,12 +8,16 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static servlets.RegisterServletAJAX.encryptThisString;
 
 /**
  *
@@ -37,6 +41,7 @@ public class LoginServletAJAX extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String inputHashPassword = encryptThisString(password);
         String realPassword= null;
         boolean exist= false;
         //controlla le condizioni
@@ -58,7 +63,7 @@ public class LoginServletAJAX extends HttpServlet {
         out.print("<response>");
         if(!exist){
             out.println("<error><field>username</field><message>Impossibile trovare l'account</message></error>");
-        }else if(!realPassword.equals(password)){
+        }else if(!realPassword.equals(inputHashPassword)){
             out.println("<error><field>password</field><message>Password errata</message></error>");
         }else{
             out.print("<login/>");
@@ -71,7 +76,7 @@ public class LoginServletAJAX extends HttpServlet {
             address= rs.getString("indirizzo");
             number= rs.getInt("numeroTelefono");
             creditNumber= rs.getInt("numeroCartaDiCredito");
-            request.getSession().setAttribute("user", new User(id, number, creditNumber, name, lastname, username, email, password, address));
+            request.getSession().setAttribute("user", new User(id, number, creditNumber, name, lastname, username, email, inputHashPassword, address));
         }
         out.print("</response>");
             
@@ -119,5 +124,37 @@ public class LoginServletAJAX extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public static String encryptThisString(String input) 
+    { 
+        try { 
+            // getInstance() method is called with algorithm SHA-1 
+            MessageDigest md = MessageDigest.getInstance("SHA-1"); 
+  
+            // digest() method is called 
+            // to calculate message digest of the input string 
+            // returned as array of byte 
+            byte[] messageDigest = md.digest(input.getBytes()); 
+  
+            // Convert byte array into signum representation 
+            BigInteger no = new BigInteger(1, messageDigest); 
+  
+            // Convert message digest into hex value 
+            String hashtext = no.toString(16); 
+  
+            // Add preceding 0s to make it 32 bit 
+            while (hashtext.length() < 32) { 
+                hashtext = "0" + hashtext; 
+            } 
+  
+            // return the HashText 
+            return hashtext; 
+        } 
+  
+        // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) { 
+            throw new RuntimeException(e); 
+        } 
+    } 
 
 }
