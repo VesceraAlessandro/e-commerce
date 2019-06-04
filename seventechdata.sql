@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 28, 2019 alle 09:31
+-- Creato il: Giu 04, 2019 alle 08:55
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
 
@@ -223,7 +223,7 @@ CREATE TABLE `utenti` (
   `nome` varchar(30) NOT NULL,
   `cognome` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(30) NOT NULL,
   `numeroTelefono` int(11) DEFAULT NULL,
   `indirizzo` varchar(30) DEFAULT NULL,
@@ -235,8 +235,8 @@ CREATE TABLE `utenti` (
 --
 
 INSERT INTO `utenti` (`id`, `nome`, `cognome`, `username`, `password`, `email`, `numeroTelefono`, `indirizzo`, `numeroCartaDiCredito`) VALUES
-(2, 'mario', 'rossi', 'admin', 'admin', 'asfdasdas@sfsadf.it', NULL, 'Via Roma 17, TN 38123', NULL),
-(3, 'client', 'client', 'client', 'client', 'client', NULL, 'client', NULL);
+(2, 'mario', 'rossi', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@gmail.com', NULL, 'Via Roma 17, TN 38123', NULL),
+(8, 'client', 'client', 'client', '23eacca368b0620d532a2aa3ee501eeac9003667', 'client@gmail.com', NULL, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -337,7 +337,7 @@ ALTER TABLE `storico`
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Limiti per le tabelle scaricate
